@@ -39,10 +39,10 @@ function Y = h_meas(X, t, stat_id, JD0_UTC, Sensor_data, Params)
     svy = v_stat_GCRF(2);
     svz = v_stat_GCRF(3);
 
-    range = sqrt((rx - sx)^2 + (ry - sy)^2 + (rz - sz)^2);
-    rangeRate = ((rx - sx) * (vx - svx) + (ry - sy) * (vy - svy) + (rz - sz) * (vz - svz)) / range;
-    % range = sqrt((rx - sx + lt * svx)^2 + (ry - sy + lt * svy)^2 + (rz - sz + lt * svz)^2);
-    % rangeRate = ((rx - sx + lt * svx) * (vx - svx) + (ry - sy + lt * svy) * (vy - svy) + (rz - sz + lt * svz) * (vz - svz)) / range;
+    % range = sqrt((rx - sx)^2 + (ry - sy)^2 + (rz - sz)^2);
+    % rangeRate = ((rx - sx) * (vx - svx) + (ry - sy) * (vy - svy) + (rz - sz) * (vz - svz)) / range;
+    range = sqrt((rx - sx + lt * svx)^2 + (ry - sy + lt * svy)^2 + (rz - sz + lt * svz)^2);
+    rangeRate = ((rx - sx + lt * svx) * (vx - svx) + (ry - sy + lt * svy) * (vy - svy) + (rz - sz + lt * svz) * (vz - svz)) / range;
 
     Y = [range + b; rangeRate];
 
